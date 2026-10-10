@@ -14,12 +14,12 @@ public class Cell {
 
     public void display() {
         if(this.status == CellStatus.EMPTY){
-            System.out.print("|   |");
+            System.out.print("[   ]");
         }
         else{
-            System.out.print("| ");
+            System.out.print("[ ");
             this.symbol.display();
-            System.out.print(" |");
+            System.out.print(" ]");
         }
     }
 }

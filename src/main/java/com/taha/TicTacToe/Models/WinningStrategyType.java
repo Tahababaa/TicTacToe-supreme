@@ -1,8 +1,8 @@
 package com.taha.TicTacToe.Models;
 
-public enum WinningStrategy {
+public enum WinningStrategyType {
+    CORNER,
     ROW,
     COLUMN,
-    DIAGONAL,
-    CORNER
+    DIAGONAL
 }
