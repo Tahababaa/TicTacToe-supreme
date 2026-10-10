@@ -1,6 +1,6 @@
 package com.taha.TicTacToe.Models;
 
-public class Player {
+public abstract class Player {
     private String name;
     private Symbol symbol;
 
@@ -24,4 +24,5 @@ public class Player {
     public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
     }
+
 }
