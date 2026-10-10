@@ -15,4 +15,8 @@ public class GameController {
                 .setWinningStrategyTypes(winningStrategyType)
                 .build();
     }
+
+    public void displayBoard(Game game) {
+        game.displayBoard();
+    }
 }

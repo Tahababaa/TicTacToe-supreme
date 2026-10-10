@@ -1,8 +1,7 @@
 package com.taha.TicTacToe;
 
-import com.taha.TicTacToe.Models.Board;
-import com.taha.TicTacToe.Models.Game;
-import com.taha.TicTacToe.Models.WinningStrategyType;
+import com.taha.TicTacToe.Controllers.GameController;
+import com.taha.TicTacToe.Models.*;
 import com.taha.TicTacToe.Strategies.WinningStrategy;
 
 import java.util.ArrayList;
@@ -10,16 +9,17 @@ import java.util.List;
 
 public class Client {
     public static void main(String[] args) {
-        Board board = new Board(3);
-        board.displayBoard();
+      GameController gameController = new GameController();
+      List<Player> players = new ArrayList<>();
+      players.add(new HumanPlayer("Taha",new Symbol('X'),"taha@gmail.com"));
+      players.add(new BotPlayer("Bottie",new Symbol('O'),BotDifficultyLevel.EASY));
 
-        Game game = Game.getBuilder()
-                .setDimensions(7)
-                .setPlayers(new ArrayList<>())
-                .setWinningStrategyTypes(List.of(WinningStrategyType.DIAGONAL, WinningStrategyType.COLUMN,WinningStrategyType.ROW,WinningStrategyType.CORNER))
-                .build();
+      List<WinningStrategyType> winningStrategyTypes = new ArrayList<>();
+      winningStrategyTypes.add(WinningStrategyType.COLUMN);
 
-        game.getBoard().displayBoard();
+      Game game = gameController.startGame(5,players,winningStrategyTypes);
+
+      gameController.displayBoard(game);
 
     }
 }

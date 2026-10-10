@@ -37,6 +37,10 @@ public class Game {
         return  new GameBuilder();
     }
 
+    public void displayBoard() {
+        board.displayBoard();
+    }
+
     public static class GameBuilder{
         private Integer dimensions;
         private List<WinningStrategyType> winningStrategyTypes;
