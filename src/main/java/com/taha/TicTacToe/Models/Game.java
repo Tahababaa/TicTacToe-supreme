@@ -43,8 +43,15 @@ public class Game {
 
     public void makeMove() {
         //Identify and fetch the current player
+        Player player = players.get(nextPlayerIndex);
         //Ask player to make a move
-        //  
+        Move move = player.makeMove();
+        // Validate the move
+        //Update the board and the cells
+        // check winner logiv  - update game status and winner accordingly
+        // update move history
+        // increment and nextPlayer index
+
     }
 
     public static class GameBuilder{

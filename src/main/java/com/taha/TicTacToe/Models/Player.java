@@ -25,4 +25,5 @@ public abstract class Player {
         this.symbol = symbol;
     }
 
+    public abstract Move makeMove();
 }
