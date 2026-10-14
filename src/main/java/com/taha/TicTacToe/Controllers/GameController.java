@@ -19,4 +19,7 @@ public class GameController {
     public void displayBoard(Game game) {
         game.displayBoard();
     }
+    public void makeMove(Game game){
+        game.makeMove();
+    }
 }

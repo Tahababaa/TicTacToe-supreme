@@ -41,6 +41,12 @@ public class Game {
         board.displayBoard();
     }
 
+    public void makeMove() {
+        //Identify and fetch the current player
+        //Ask player to make a move
+        //  
+    }
+
     public static class GameBuilder{
         private Integer dimensions;
         private List<WinningStrategyType> winningStrategyTypes;
