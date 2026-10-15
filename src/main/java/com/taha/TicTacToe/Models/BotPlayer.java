@@ -6,4 +6,10 @@ public class BotPlayer extends Player{
         super(name, symbol);
         this.difficultyLevel=difficultyLevel;
     }
+
+    @Override
+    public Move makeMove(Board board) {
+        System.out.println(this.getName()+ " is planning it's move...");
+        return null;
+    }
 }

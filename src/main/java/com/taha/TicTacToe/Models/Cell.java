@@ -17,9 +17,9 @@ public class Cell {
             System.out.print("[   ]");
         }
         else{
-            System.out.print("[ ");
+            System.out.print("[");
             this.symbol.display();
-            System.out.print(" ]");
+            System.out.print("]");
         }
     }
 
@@ -31,7 +31,7 @@ public class Cell {
         this.row = row;
     }
 
-    public Integer getCol() {
+    public Integer getColumn() {
         return col;
     }
 

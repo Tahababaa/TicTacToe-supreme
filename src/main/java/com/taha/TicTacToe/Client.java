@@ -21,5 +21,10 @@ public class Client {
 
       gameController.displayBoard(game);
 
+      while(gameController.getGameStatus(game).equals(GameStatus.IN_PROGRESS)){
+          gameController.makeMove(game);
+          gameController.displayBoard(game);
+      }
+
     }
 }

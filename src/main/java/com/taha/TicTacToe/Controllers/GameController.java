@@ -1,6 +1,7 @@
 package com.taha.TicTacToe.Controllers;
 
 import com.taha.TicTacToe.Models.Game;
+import com.taha.TicTacToe.Models.GameStatus;
 import com.taha.TicTacToe.Models.Player;
 import com.taha.TicTacToe.Models.WinningStrategyType;
 
@@ -21,5 +22,9 @@ public class GameController {
     }
     public void makeMove(Game game){
         game.makeMove();
+    }
+
+    public GameStatus getGameStatus(Game game) {
+        return game.getStatus();
     }
 }

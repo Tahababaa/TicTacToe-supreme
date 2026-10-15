@@ -1,5 +1,7 @@
 package com.taha.TicTacToe.Models;
 
+import com.taha.TicTacToe.Validations.ValidateMove;
+
 import java.util.Scanner;
 
 public class HumanPlayer extends Player{
@@ -11,13 +13,14 @@ public class HumanPlayer extends Player{
     }
 
     @Override
-    public Move makeMove() {
+    public Move makeMove(Board board ) {
         System.out.println("It's "+this.getName() + "'s move!");
         System.out.println("Please enter the row: ");
         Integer row = scanner.nextInt();
         System.out.println("Please enter the row: ");
         Integer col = scanner.nextInt();
         Move move = new Move(this,new Cell(row,col));
+        ValidateMove.validate(board,move);
         return move;
     }
 }

@@ -1,5 +1,6 @@
 package com.taha.TicTacToe.Models;
 
+import com.taha.TicTacToe.Factories.WinningStrategyFactory;
 import com.taha.TicTacToe.Strategies.WinningStrategy;
 import com.taha.TicTacToe.Validations.UniquePlayerValidation;
 
@@ -21,12 +22,29 @@ public class Game {
         this.winningStrategies = new ArrayList<>();
 
         for(WinningStrategyType type:gameBuilder.winningStrategyTypes){
+            winningStrategies.add(WinningStrategyFactory.getStrategy(type));
 
         }
         this.status=GameStatus.IN_PROGRESS;
         this.winner = null;
         this.moves = new ArrayList<>();
         this.nextPlayerIndex =0;
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(GameStatus status) {
+        this.status = status;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
     }
 
     public Board getBoard() {
@@ -45,12 +63,28 @@ public class Game {
         //Identify and fetch the current player
         Player player = players.get(nextPlayerIndex);
         //Ask player to make a move
-        Move move = player.makeMove();
-        // Validate the move
+        Move move = player.makeMove(this.board);
         //Update the board and the cells
-        // check winner logiv  - update game status and winner accordingly
+        Cell cellFromMove = move.getCell(); // just for row col info
+        this.board.getGrid().get(cellFromMove.getRow()).get(cellFromMove.getColumn()).setStatus(CellStatus.FILLED);
+        this.board.getGrid().get(cellFromMove.getRow()).get(cellFromMove.getColumn()).setSymbol(move.getPlayer().getSymbol());
         // update move history
+        this.moves.add(move);
+
+        // check winner logic  - update game status and winner accordingly
+        for(WinningStrategy strategy : winningStrategies){
+            if(strategy.checkWinner(this.board,move)){
+                //update game status and winner accordingly
+                this.status=GameStatus.WON;
+                this.winner=move.getPlayer();
+            }
+        }
+        //check draw
+        if(board.getDimension()* board.getDimension() == moves.size()){
+            this.status=GameStatus.DRAW;
+        }
         // increment and nextPlayer index
+        nextPlayerIndex = (nextPlayerIndex + 1) % this.players.size();
 
     }
 
