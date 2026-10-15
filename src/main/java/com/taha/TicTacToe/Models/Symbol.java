@@ -15,6 +15,6 @@ public class Symbol {
         this.symchar = symchar;
     }
     public void display(){
-        System.out.println(symchar);
+        System.out.print(symchar);
     }
 }
