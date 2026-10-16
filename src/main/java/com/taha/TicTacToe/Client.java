@@ -15,9 +15,9 @@ public class Client {
       players.add(new BotPlayer("Bottie",new Symbol('O'),BotDifficultyLevel.EASY));
 
       List<WinningStrategyType> winningStrategyTypes = new ArrayList<>();
-      winningStrategyTypes.add(WinningStrategyType.COLUMN);
+      winningStrategyTypes.add(WinningStrategyType.ROW);
 
-      Game game = gameController.startGame(5,players,winningStrategyTypes);
+      Game game = gameController.startGame(3,players,winningStrategyTypes);
 
       gameController.displayBoard(game);
 

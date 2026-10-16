@@ -25,5 +25,13 @@ public class RowWinningStrategy implements WinningStrategy{
         countMap.putIfAbsent(symbol,0);
         countMap.put(symbol,countMap.get(symbol)+1);
 
+
+        //Check if WON or not ie: count==dimensions
+
+        if(countMap.get(symbol) == board.getDimension()){
+            return true;
+        }
+        return false;
+
     }
 }
