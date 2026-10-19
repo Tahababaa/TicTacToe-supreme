@@ -25,6 +25,11 @@ public class Client {
           gameController.makeMove(game);
           gameController.displayBoard(game);
       }
+      if(gameController.getGameStatus(game).equals(GameStatus.WON)){
+          System.out.println(gameController.getGameWinner(game) + " won the game!");
+      }else{
+          System.out.println(" The game was a tie!");
+      }
 
     }
 }
