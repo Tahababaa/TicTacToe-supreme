@@ -19,8 +19,10 @@ public class Client {
 
       List<WinningStrategyType> winningStrategyTypes = new ArrayList<>();
       winningStrategyTypes.add(WinningStrategyType.ROW);
+        winningStrategyTypes.add(WinningStrategyType.COLUMN);
 
-      Game game = gameController.startGame(3,players,winningStrategyTypes);
+
+        Game game = gameController.startGame(3,players,winningStrategyTypes);
 
       gameController.displayBoard(game);
 
