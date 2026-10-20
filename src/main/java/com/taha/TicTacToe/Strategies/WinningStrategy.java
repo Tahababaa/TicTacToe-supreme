@@ -5,4 +5,6 @@ import com.taha.TicTacToe.Models.Move;
 
 public interface WinningStrategy {
     boolean checkWinner(Board board, Move move);
+    void undoCountMapUpdate(Move move);
+
 }

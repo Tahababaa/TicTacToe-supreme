@@ -88,6 +88,26 @@ public class Game {
 
     }
 
+    public void undo() {
+        // Get the last move from moves history
+        Move lastMove = moves.get(moves.size()-1);
+        // Update the board cells to previous state
+        Cell cellFromMove = lastMove.getCell(); // just for row col info
+        this.board.getGrid().get(cellFromMove.getRow()).get(cellFromMove.getColumn()).setStatus(CellStatus.EMPTY);
+        this.board.getGrid().get(cellFromMove.getRow()).get(cellFromMove.getColumn()).setSymbol(null);
+        // Update the gameStatus and winner
+        this.status = GameStatus.IN_PROGRESS;
+        this.winner=null;
+
+        // Update the next player index(decrement) [MOD arithmetic (a-b)%m = (a%m -b%m +m)%m]
+        nextPlayerIndex = (nextPlayerIndex -1 +players.size())% players.size();
+        // update the ALL strategy count maps to undo the move(col, row, diagonal)
+        for(WinningStrategy strategy : winningStrategies){
+            strategy.undoCountMapUpdate(lastMove);
+        }
+
+    }
+
     public static class GameBuilder{
         private Integer dimensions;
         private List<WinningStrategyType> winningStrategyTypes;

@@ -31,4 +31,16 @@ public class ColWinningStrategy implements WinningStrategy{
         }
         return false;
     }
+
+    @Override
+    public void undoCountMapUpdate(Move move) {
+        Cell cell = move.getCell();
+        Integer col = cell.getColumn();
+        Player player = move.getPlayer();
+        Character symbol = player.getSymbol().getSymchar();
+
+//        rowCountMap.putIfAbsent(row,new HashMap<>());
+        HashMap<Character,Integer> countMap = colCountMap.get(col);
+        countMap.put(symbol,countMap.get(symbol)+1);
+    }
 }

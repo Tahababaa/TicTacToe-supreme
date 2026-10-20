@@ -34,4 +34,18 @@ public class RowWinningStrategy implements WinningStrategy{
         return false;
 
     }
+
+    @Override
+    public void undoCountMapUpdate(Move move) {
+        Cell cell = move.getCell();
+        Integer row = cell.getRow();
+        Player player = move.getPlayer();
+        Character symbol = player.getSymbol().getSymchar();
+
+//        rowCountMap.putIfAbsent(row,new HashMap<>());
+        HashMap<Character,Integer> countMap = rowCountMap.get(row);
+        countMap.put(symbol,countMap.get(symbol)+1);
+
+
+    }
 }
